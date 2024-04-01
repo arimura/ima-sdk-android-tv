@@ -14,6 +14,7 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.loadUrl("https://www.google.com");
+        myWebView.getSettings().getJavaScriptEnabled();
+        myWebView.loadUrl("file:///android_asset/index.html");
     }
 }
