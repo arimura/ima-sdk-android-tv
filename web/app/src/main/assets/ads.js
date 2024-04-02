@@ -73,7 +73,7 @@ function loadAds(event) {
 
   console.log("loading ads");
 
-  videoElement.load();
+  // videoElement.load();
   adDisplayContainer.initialize();
 
   var width = videoElement.clientWidth;
@@ -106,14 +106,25 @@ function onAdsManagerLoaded(adsManagerLoadedEvent) {
   adsManager.addEventListener(
     google.ima.AdEvent.Type.LOADED,
     onAdLoaded);
+  adsManager.addEventListener(
+    google.ima.AdEvent.Type.ALL_ADS_COMPLETED,
+    onAllAdsCompleted);
+    
  loadAds(); 
 }
+
+function onAllAdsCompleted() {
+  console.log("all ads completed");
+  adsLoaded = false;
+  initializeIMA();
+}
+
 function onContentPauseRequested() {
-  videoElement.pause();
+  // videoElement.pause();
 }
 
 function onContentResumeRequested() {
-  videoElement.play();
+  // videoElement.play();
 }
 
 function onAdError(adErrorEvent) {
