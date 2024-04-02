@@ -1,9 +1,13 @@
+body {
+  margin: 0px;
+}
+
 #page-content {
     position: relative;
     /* this element's width controls the effective height */
     /* of the video container's padding-bottom */
     max-width: 640px;
-    margin: 10px auto;
+    /* margin: 10px auto; */
   }
   
   #video-container {
