@@ -48,6 +48,7 @@ function initializeIMA() {
   });
 
   var adsRequest = new google.ima.AdsRequest();
+  // adsRequest.adTagUrl = 'https://voyagegroup.github.io/FluctSDK-Hosting/sdk/gsm-vast-signage.xml';
   adsRequest.adTagUrl = 'https://gcmast-cdn.goldspotmedia.com/libs/assets/adpods/10adpods.xml';
 
   // Specify the linear and nonlinear slot sizes. This helps the SDK to
@@ -76,6 +77,8 @@ function loadAds(event) {
   // videoElement.load();
   adDisplayContainer.initialize();
 
+  new google.ima.AdsRenderingSettings();
+
   var width = videoElement.clientWidth;
   var height = videoElement.clientHeight;
   try {
@@ -91,9 +94,12 @@ function loadAds(event) {
 
 
 function onAdsManagerLoaded(adsManagerLoadedEvent) {
+  const adsRenderingSettings = new google.ima.AdsRenderingSettings();
+  adsRenderingSettings.uiElements = [];
+
   // Instantiate the AdsManager from the adsLoader response and pass it the video element
   adsManager = adsManagerLoadedEvent.getAdsManager(
-    videoElement);
+    videoElement, adsRenderingSettings);
   adsManager.addEventListener(
     google.ima.AdErrorEvent.Type.AD_ERROR,
     onAdError);
