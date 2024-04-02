@@ -9,13 +9,13 @@ var adsManager;
 window.addEventListener('load', function (event) {
   videoElement = document.getElementById('video-element');
   initializeIMA();
-  videoElement.addEventListener('play', function (event) {
-    loadAds(event);
-  });
-  var playButton = document.getElementById('play-button');
-  playButton.addEventListener('click', function (event) {
-    videoElement.play();
-  });
+  // videoElement.addEventListener('play', function (event) {
+  //   loadAds(event);
+  // });
+  // var playButton = document.getElementById('play-button');
+  // playButton.addEventListener('click', function (event) {
+  //   videoElement.play();
+  // });
 });
 
 window.addEventListener('resize', function (event) {
@@ -48,10 +48,7 @@ function initializeIMA() {
   });
 
   var adsRequest = new google.ima.AdsRequest();
-  adsRequest.adTagUrl = 'https://pubads.g.doubleclick.net/gampad/ads?' +
-    'iu=/21775744923/external/single_ad_samples&sz=640x480&' +
-    'cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&' +
-    'gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
+  adsRequest.adTagUrl = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
 
   // Specify the linear and nonlinear slot sizes. This helps the SDK to
   // select the correct creative if multiple are returned.
@@ -72,7 +69,7 @@ function loadAds(event) {
   adsLoaded = true;
 
   // Prevent triggering immediate playback when ads are loading
-  event.preventDefault();
+  // event.preventDefault();
 
   console.log("loading ads");
 
@@ -87,6 +84,7 @@ function loadAds(event) {
   } catch (adError) {
     // Play the video without ads, if an error occurs
     console.log("AdsManager could not be started");
+    console.log(adError);
     videoElement.play();
   }
 }
@@ -108,6 +106,7 @@ function onAdsManagerLoaded(adsManagerLoadedEvent) {
   adsManager.addEventListener(
     google.ima.AdEvent.Type.LOADED,
     onAdLoaded);
+ loadAds(); 
 }
 function onContentPauseRequested() {
   videoElement.pause();
