@@ -1,5 +1,4 @@
 var videoElement;
-// Define a variable to track whether there are ads loaded and initially set it to false
 var adsLoaded = false;
 var adContainer;
 var adDisplayContainer;
@@ -9,13 +8,6 @@ var adsManager;
 window.addEventListener('load', function (event) {
   videoElement = document.getElementById('video-element');
   initializeIMA();
-  // videoElement.addEventListener('play', function (event) {
-  //   loadAds(event);
-  // });
-  // var playButton = document.getElementById('play-button');
-  // playButton.addEventListener('click', function (event) {
-  //   videoElement.play();
-  // });
 });
 
 window.addEventListener('resize', function (event) {
