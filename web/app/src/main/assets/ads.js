@@ -1,30 +1,22 @@
-var videoElement;
-var adsLoaded = false;
-var adContainer;
-var adDisplayContainer;
-var adsLoader;
-var adsManager;
+let videoElement;
+let adsLoaded = false;
+let adContainer;
+let adDisplayContainer;
+let adsLoader;
+let adsManager;
 
-window.addEventListener('load', function (event) {
+window.addEventListener('load', (event) => {
   videoElement = document.getElementById('video-element');
-  initializeIMA();
-});
-
-window.addEventListener('resize', function (event) {
-  console.log("window resized");
-  if (adsManager) {
-    var width = videoElement.clientWidth;
-    var height = videoElement.clientHeight;
-    adsManager.resize(width, height, google.ima.ViewMode.NORMAL);
-  }
+  adContainer = document.getElementById('ad-container');
+  initializeIMA(); 
 });
 
 function initializeIMA() {
   console.log("initializing IMA");
-  adContainer = document.getElementById('ad-container');
 
   adDisplayContainer = new google.ima.AdDisplayContainer(adContainer, videoElement);
   adsLoader = new google.ima.AdsLoader(adDisplayContainer);
+
   adsLoader.addEventListener(
     google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED,
     onAdsManagerLoaded,
@@ -34,23 +26,10 @@ function initializeIMA() {
     onAdError,
     false);
 
-  // Let the AdsLoader know when the video has ended
-  videoElement.addEventListener('ended', function () {
-    adsLoader.contentComplete();
-  });
-
   var adsRequest = new google.ima.AdsRequest();
   // adsRequest.adTagUrl = 'https://voyagegroup.github.io/FluctSDK-Hosting/sdk/gsm-vast-signage.xml';
+  //TODO: create url params
   adsRequest.adTagUrl = 'https://gcmast-cdn.goldspotmedia.com/libs/assets/adpods/10adpods.xml';
-
-  // Specify the linear and nonlinear slot sizes. This helps the SDK to
-  // select the correct creative if multiple are returned.
-  adsRequest.linearAdSlotWidth = videoElement.clientWidth;
-  adsRequest.linearAdSlotHeight = videoElement.clientHeight;
-  adsRequest.nonLinearAdSlotWidth = videoElement.clientWidth;
-  adsRequest.nonLinearAdSlotHeight = videoElement.clientHeight / 3;
-
-  // Pass the request to the adsLoader to request ads
   adsLoader.requestAds(adsRequest);
 }
 
