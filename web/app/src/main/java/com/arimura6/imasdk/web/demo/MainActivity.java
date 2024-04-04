@@ -21,6 +21,7 @@ public class MainActivity extends FragmentActivity {
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
         myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
         myWebView.setWebChromeClient(new WebChromeClient() {
 //            @Override
