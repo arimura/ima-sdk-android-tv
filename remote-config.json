@@ -1,0 +1,52 @@
+{
+    "vast_endpoints": [
+        "https://sh.adingo.jp/vast.xml?fluct_cmsid=100000&pmad=12&pmxd=360&group_id=10001756[…]r=&scor=&lip=&vid=100000&vpos=preroll&mridx=&tmax=&title=&kvs=",
+        "https://gcmast-cdn.goldspotmedia.com/libs/assets/adpods/10adpods.xml"
+    ],
+    "buildings": [
+        {
+            "id": 1,
+            "name": "テストビル"
+        },
+        {
+            "id": 2,
+            "name": "TOKYO TORCH 常盤橋タワー"
+        },
+        {
+            "id": 3,
+            "name": "東京ミッドタウン八重洲 八重洲セントラルタワー"
+        },
+        {
+            "id": 4,
+            "name": "麻布台ヒルズ森JPタワー"
+        },
+        {
+            "id": 5,
+            "name": "東京都庁第一本庁舎"
+        },
+        {
+            "id": 6,
+            "name": "サンシャイン60"
+        },
+        {
+            "id": 7,
+            "name": "NTTドコモ代々木ビル"
+        },
+        {
+            "id": 8,
+            "name": "プランズタワー豊洲"
+        },
+        {
+            "id": 9,
+            "name": "パークタワーグランスカイ"
+        },
+        {
+            "id": 10,
+            "name": "大手町タワー"
+        },
+        {
+            "id": 11,
+            "name": "新丸の内ビルディング"
+        }
+    ]
+}

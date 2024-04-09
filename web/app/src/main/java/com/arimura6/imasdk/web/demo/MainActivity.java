@@ -28,57 +28,48 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         //set up Firebase Remote Config
-        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.getInstance();
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
                 .setMinimumFetchIntervalInSeconds(3600)
                 .build();
-        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
-//        Map<String, Object> remoteConfigDefaults = new HashMap<>();
-//        remoteConfigDefaults.put("hoge", "fuga");
-//        mFirebaseRemoteConfig.setDefaultsAsync(remoteConfigDefaults);
-        mFirebaseRemoteConfig.fetchAndActivate()
+        remoteConfig.setConfigSettingsAsync(configSettings);
+        remoteConfig.fetchAndActivate()
                 .addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
                     @Override
                     public void onComplete(@NonNull Task<Boolean> task) {
                         if (task.isSuccessful()) {
-                            boolean updated = task.getResult();
-                            Log.d("MainActivity", "Config params updated: " + mFirebaseRemoteConfig.getAll());
-//                            Toast.makeText(MainActivity.this, "Fetch and activate succeeded",
-//                                    Toast.LENGTH_SHORT).show();
-
+                            remoteConfig.getAll();
                         } else {
-                            Toast.makeText(MainActivity.this, "Fetch failed",
-                                    Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
-
-
-        WebView.setWebContentsDebuggingEnabled(true);
-
-        WebView myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.getSettings().setJavaScriptEnabled(true);
-        myWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
-
-        myWebView.setWebChromeClient(new WebChromeClient() {
+//        WebView.setWebContentsDebuggingEnabled(true);
+//
+//        WebView myWebView = (WebView) findViewById(R.id.webview);
+//        myWebView.getSettings().setJavaScriptEnabled(true);
+//        myWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
+//
+//        myWebView.setWebChromeClient(new WebChromeClient() {
+////            @Override
+////            public void onConsoleMessage(String message, int lineNumber, String sourceID) {
+////                Log.d("WebView", message + " -- From line " + lineNumber + " of " + sourceID);
+////            }
 //            @Override
-//            public void onConsoleMessage(String message, int lineNumber, String sourceID) {
-//                Log.d("WebView", message + " -- From line " + lineNumber + " of " + sourceID);
+//            public Bitmap getDefaultVideoPoster() {
+//                return Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888);
 //            }
-            @Override
-            public Bitmap getDefaultVideoPoster() {
-                return Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888);
-            }
+//
+//            @Override
+//            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+//                Log.d("WebView", consoleMessage.message() + " -- From line "
+//                        + consoleMessage.lineNumber() + " of " + consoleMessage.sourceId());
+//                return true;
+//            }
+//        });
 
-            @Override
-            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-                Log.d("WebView", consoleMessage.message() + " -- From line "
-                        + consoleMessage.lineNumber() + " of " + consoleMessage.sourceId());
-                return true;
-            }
-        });
+//        myWebView.loadUrl("file:///android_asset/index.html");
 
-        myWebView.loadUrl("file:///android_asset/index.html");
+
     }
 }
