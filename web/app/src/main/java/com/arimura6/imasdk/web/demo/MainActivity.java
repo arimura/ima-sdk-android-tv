@@ -22,6 +22,10 @@ import java.util.Map;
 
 public class MainActivity extends FragmentActivity {
 
+    private static final String KEY_BUILDINGS = "buildings";
+    private static final String KEY_ENDPOINTS = "endpoints";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
