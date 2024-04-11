@@ -35,4 +35,6 @@ google-services.json
 # Android Profiling
 *.hprof
 
+/tools/firestore_importer/keys
 
+.DS_Store
