@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"log"
+	"time"
 
 	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go"
@@ -34,12 +35,12 @@ func main() {
 
 func addDocAsMap(ctx context.Context, client *firestore.Client) error {
 	_, err := client.Collection("test").Doc("hoge").Set(ctx, map[string]interface{}{
-		"name":    "Los Angeles",
-		"state":   "CA",
-		"country": "USA",
+		"name":      "Los Angeles",
+		"state":     "CA",
+		"country":   "USA",
+		"updatedAd": time.Now(),
 	})
 	if err != nil {
-		// Handle any errors in an appropriate way, such as returning them.
 		log.Printf("An error has occurred: %s", err)
 	}
 

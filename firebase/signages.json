@@ -1,0 +1,16 @@
+{
+    "1": {
+        "name" : "丸ビル",
+        "endpoints" : [
+            "https://gcmast-cdn.goldspotmedia.com/libs/assets/break/vmap/midroll_vmap_all_0_sample.xml",
+            "https://sh.adingo.jp/vast.xml?fluct_cmsid=100000&pmad=12&pmxd=360&group_id=10001756[%E2%80%A6]r=&scor=&lip=&vid=100000&vpos=preroll&mridx=&tmax=&title=&kvs="
+        ]
+    },
+    "2": {
+        "name" : "虎ノ門ヒルズ",
+        "endpoints" : [
+            "https://gcmast-cdn.goldspotmedia.com/libs/assets/break/vmap/midroll_vmap_all_0_sample.xml",
+            "https://sh.adingo.jp/vast.xml?fluct_cmsid=100000&pmad=12&pmxd=360&group_id=10001756[%E2%80%A6]r=&scor=&lip=&vid=100000&vpos=preroll&mridx=&tmax=&title=&kvs="
+        ]
+    }
+}
