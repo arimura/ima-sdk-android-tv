@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
@@ -21,29 +24,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends FragmentActivity {
+    private static final String FIREBASE_SIGNAGE_COLLECTION= "test";
 
-    private static final String KEY_BUILDINGS = "buildings";
-    private static final String KEY_ENDPOINTS = "endpoints";
-
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //set up Firebase Remote Config
-        FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.getInstance();
-        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(3600)
-                .build();
-        remoteConfig.setConfigSettingsAsync(configSettings);
-        remoteConfig.fetchAndActivate()
-                .addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(FIREBASE_SIGNAGE_COLLECTION)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<Boolean> task) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            remoteConfig.getAll();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map<String, Object> data = document.getData();
+                                Log.d(TAG, document.getId() + " => " + data);
+                            }
                         } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
                         }
                     }
                 });
