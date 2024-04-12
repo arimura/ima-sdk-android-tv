@@ -5,11 +5,17 @@ let adDisplayContainer;
 let adsLoader;
 let adsManager;
 
-window.addEventListener('load', (event) => {
+// window.addEventListener('load', (event) => {
+//   videoElement = document.getElementById('video-element');
+//   adContainer = document.getElementById('ad-container');
+//   initializeIMA(); 
+// });
+
+function startAds() {
   videoElement = document.getElementById('video-element');
   adContainer = document.getElementById('ad-container');
-  initializeIMA(); 
-});
+  initializeIMA();  
+}
 
 function initializeIMA() {
   console.log("initializing IMA");

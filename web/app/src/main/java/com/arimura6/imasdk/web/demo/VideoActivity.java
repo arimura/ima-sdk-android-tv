@@ -48,7 +48,7 @@ public class VideoActivity extends FragmentActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 Log.d(TAG, "onPageFinished: " + url);
-//                view.evaluateJavascript("javascript:onPageLoaded();", null);
+                view.evaluateJavascript("javascript:startAds();", null);
 ////                if (signage != null) {
 ////                    String jsCode = String.format(
 ////                            "javascript:handleSignageData('%s', '%s');",
