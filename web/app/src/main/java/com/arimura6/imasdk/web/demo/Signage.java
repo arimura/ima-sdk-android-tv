@@ -45,6 +45,17 @@ public class Signage implements Parcelable {
         return endpoints;
     }
 
+    public String getJSEndpoints() {
+        //return ["hoge", "fuga"]
+        StringBuilder sb = new StringBuilder("[");
+        for (String endpoint : endpoints) {
+            sb.append("\"").append(endpoint).append("\",");
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append("]");
+        return sb.toString();
+    }
+
     public String getLabel(){
         return id + ": " + name;
     }

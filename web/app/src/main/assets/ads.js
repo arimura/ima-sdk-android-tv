@@ -4,12 +4,9 @@ let adContainer;
 let adDisplayContainer;
 let adsLoader;
 let adsManager;
-
-// window.addEventListener('load', (event) => {
-//   videoElement = document.getElementById('video-element');
-//   adContainer = document.getElementById('ad-container');
-//   initializeIMA(); 
-// });
+//Set from native code
+let endpoints; 
+let endpointIdx = 0;
 
 function startAds() {
   videoElement = document.getElementById('video-element');
@@ -33,9 +30,8 @@ function initializeIMA() {
     false);
 
   var adsRequest = new google.ima.AdsRequest();
-  // adsRequest.adTagUrl = 'https://voyagegroup.github.io/FluctSDK-Hosting/sdk/gsm-vast-signage.xml';
-  //TODO: create url params
-  adsRequest.adTagUrl = 'https://gcmast-cdn.goldspotmedia.com/libs/assets/adpods/10adpods.xml';
+  adsRequest.adTagUrl = endpoints[endpointIdx];
+  endpointIdx = (endpointIdx + 1) % endpoints.length;
   adsLoader.requestAds(adsRequest);
 }
 
