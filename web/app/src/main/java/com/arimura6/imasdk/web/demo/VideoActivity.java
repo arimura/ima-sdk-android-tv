@@ -6,6 +6,7 @@ import android.util.Log;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 //import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
@@ -40,6 +41,22 @@ public class VideoActivity extends FragmentActivity {
                 Log.d("WebView", consoleMessage.message() + " -- From line "
                         + consoleMessage.lineNumber() + " of " + consoleMessage.sourceId());
                 return true;
+            }
+        });
+
+        myWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                Log.d(TAG, "onPageFinished: " + url);
+//                view.evaluateJavascript("javascript:onPageLoaded();", null);
+////                if (signage != null) {
+////                    String jsCode = String.format(
+////                            "javascript:handleSignageData('%s', '%s');",
+////                            signage.getId(),
+////                            signage.getName()
+////                    );
+////                    view.evaluateJavascript(jsCode, null);
+////                }
             }
         });
 
