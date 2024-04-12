@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,7 +35,7 @@ public class MainActivity extends FragmentActivity {
 
     private static final String TAG = "MainActivity";
 
-    private Spinner spinner;;
+    private Spinner spinner;
 
     private final List<Signage> signages = new ArrayList<>();
 
@@ -42,6 +45,13 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         this.spinner = findViewById(R.id.mySpinner);
+        Button showAdButton = findViewById(R.id.showAdButton);
+        showAdButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, VideoActivity.class);
+            int selectedPosition = spinner.getSelectedItemPosition();
+            intent.putExtra(Signage.INTENT_EXTRA_KEY, signages.get(selectedPosition));
+            startActivity(intent);
+        });
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection(FIREBASE_SIGNAGE_COLLECTION)

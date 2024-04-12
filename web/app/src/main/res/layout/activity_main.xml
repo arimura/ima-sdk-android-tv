@@ -28,6 +28,14 @@
         app:layout_constraintStart_toStartOf="@id/searchEditText"
         app:layout_constraintEnd_toEndOf="@id/searchEditText" />
 
-
+    <Button
+        android:id="@+id/showAdButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Show ad"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/mySpinner"
+        app:layout_constraintStart_toStartOf="@id/mySpinner"
+        app:layout_constraintEnd_toEndOf="@id/mySpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
