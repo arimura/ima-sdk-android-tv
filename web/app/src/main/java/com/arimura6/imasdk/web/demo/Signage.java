@@ -40,4 +40,8 @@ public class Signage {
     public List<String> getEndpoints() {
         return endpoints;
     }
+
+    public String getLabel(){
+        return id + ": " + name;
+    }
 }
