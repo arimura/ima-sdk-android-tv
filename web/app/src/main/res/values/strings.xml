@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">WebIMASDK</string>
-    <string name="accessibility_service_description">hoge</string>
-    <string name="accessibility_service_label">hoge</string>
 </resources>
