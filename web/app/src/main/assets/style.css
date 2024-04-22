@@ -1,12 +1,14 @@
 body {
   margin: 0px;
+  background-color: black;
 }
 
 #page-content {
     position: relative;
     /* this element's width controls the effective height */
     /* of the video container's padding-bottom */
-    max-width: 640px;
+    width: 100vw;
+    height: 56.25vw;
     /* margin: 10px auto; */
   }
   
@@ -31,4 +33,10 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
+  }
+
+  #ad-container > div {
+    width: 100%;
+    height: 100%;
   }
