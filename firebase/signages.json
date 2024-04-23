@@ -2,7 +2,6 @@
     "1": {
         "name" : "丸ビル",
         "endpoints" : [
-            "https://voyagegroup.github.io/FluctSDK-Hosting/sdk/gsm-vast-signage.xml",
             "https://gcmast-cdn.goldspotmedia.com/libs/assets/break/vmap/midroll_vmap_all_0_sample.xml"
         ]
     },
